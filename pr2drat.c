@@ -155,7 +155,7 @@ int main (int argc, char** argv) {
       while (*p++) count++;
       if (count == 1) mflag = 0;
 
-//      mflag = 0;
+      mflag = 0;
 
 //      printf("c mflag = %i\n", mflag);
 
