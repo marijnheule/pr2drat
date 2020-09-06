@@ -1,6 +1,6 @@
 /***************************************************************************************[pr2drat.c]
-Copyright (c) 2017-2018 Marijn Heule, The University of Texas at Austin.
-Last edit, November 9, 2018
+Copyright (c) 2017-2020 Marijn Heule, Carnegie Mellon University
+Last edit, September 6, 2020
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -165,13 +165,12 @@ int main (int argc, char** argv) {
               int k;
         for (i = 0; i < nLit; i++) {
           if (formula[i] == 0) {
-//            printf ("c "); for (k = piv; k < i; k++) printf ("%i ", formula[k]); printf("0 %i %i\n", sat, red);
             if ((sat == 0) && (red >  0)) {
               printf ("%i ", -def);
               for (k = piv; k < i; k++)
                 if (assignment[formula[k]] == 0)
                   printf ("%i ", formula[k]);
-                printf("0\n"); }
+              printf("0\n"); }
             piv = i + 1; sat = 0; red = 0; }
           else if (assignment[formula[i]] >  0) sat++;
           else if (assignment[formula[i]] < -1) red++; } }
@@ -183,7 +182,7 @@ int main (int argc, char** argv) {
       // phase II (a): add the implication x -> omega
       if (opt == 0 && mflag == 0) {
         p = witness;
-        while (*p) printf ("%i %i 0\n", *p++, -def); }
+        while (*p) printf ("%i %i 0\n", -def, *p++); }
 
       // phase II (b): weaken the involved clauses
       piv = 0, sat = 0, red = 0;
